@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/FallZone.gd" type="Script" id=8]
+[ext_resource path="res://Items/apple.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Items/banana.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1273,7 +1275,35 @@ __meta__ = {
 
 [node name="Collision" type="CollisionShape2D" parent="FallZone"]
 position = Vector2( 0.00012207, 0 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 59 )
+
+[node name="Fruits" type="Node2D" parent="."]
+
+[node name="apple" parent="Fruits" instance=ExtResource( 9 )]
+position = Vector2( 39, 19 )
+
+[node name="apple2" parent="Fruits" instance=ExtResource( 9 )]
+position = Vector2( 100, 1 )
+
+[node name="apple3" parent="Fruits" instance=ExtResource( 9 )]
+position = Vector2( 128, 55 )
+
+[node name="banana" parent="Fruits" instance=ExtResource( 10 )]
+position = Vector2( -37, 12 )
+
+[node name="banana2" parent="Fruits" instance=ExtResource( 10 )]
+position = Vector2( 146, -17 )
+
+[node name="banana3" parent="Fruits" instance=ExtResource( 10 )]
+position = Vector2( 203, -33 )
+
+[node name="banana4" parent="Fruits" instance=ExtResource( 10 )]
+position = Vector2( 244, -3 )
+
+[node name="banana5" parent="Fruits" instance=ExtResource( 10 )]
+position = Vector2( 312, -55 )
+
+[node name="banana6" parent="Fruits" instance=ExtResource( 10 )]
+position = Vector2( 353, 38 )
 
 [connection signal="body_entered" from="FallZone" to="FallZone" method="_on_FallZone_body_entered"]
