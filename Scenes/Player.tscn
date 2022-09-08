@@ -208,7 +208,7 @@ tracks/2/keys = {
 extents = Vector2( 10.0625, 12.0039 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, -16 )
+position = Vector2( -0.157486, -15.8425 )
 collision_mask = 14
 script = ExtResource( 1 )
 
@@ -241,3 +241,17 @@ position = Vector2( 8.23109, 9.99391 )
 enabled = true
 cast_to = Vector2( 0, 12 )
 collision_mask = 8
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+limit_left = -32
+limit_bottom = 260
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.4
+drag_margin_top = 0.3
+drag_margin_right = 0.4
+drag_margin_bottom = 0.3
+editor_draw_screen = false
