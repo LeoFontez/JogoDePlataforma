@@ -6,5 +6,4 @@ func _ready():
 
 
 func _on_FallZone_body_entered(body):
-	print(body)
 	get_tree().reload_current_scene()
