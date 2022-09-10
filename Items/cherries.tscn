@@ -124,7 +124,7 @@ tracks/2/keys = {
 "values": [ 17 ]
 }
 
-[node name="banana" instance=ExtResource( 3 )]
+[node name="Cherry" instance=ExtResource( 3 )]
 
 [node name="Apple" parent="." index="1"]
 texture = ExtResource( 1 )
