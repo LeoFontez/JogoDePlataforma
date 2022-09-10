@@ -13,7 +13,7 @@ var maxHealth = 3
 var hurted = false
 
 var knockbackDir = 1
-var knockbackInten = 500
+var knockbackInten = 1000
 
 onready var raycasts = $Raycasts
 
@@ -22,7 +22,7 @@ signal changeLife(playerHealth)
 func _ready():
 	connect("changeLife", get_parent().get_node("HUD/HBoxContainer/Hearts"), "onChangeLife")
 	emit_signal("changeLife", maxHealth)
-	position.x = Global.checkPointPos + 50
+	position.x = Global.checkPointPos
 
 func _physics_process(delta: float) -> void:
 
@@ -50,7 +50,10 @@ func _get_input():
 	
 	if moveDirection != 0:
 		$Texture.scale.x = moveDirection 
+		$Right.scale.x = moveDirection
+		$Left.scale.x = moveDirection
 		knockbackDir = moveDirection
+		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and isGrounded:
 		velocity.y = jumpForce / 2		
@@ -79,7 +82,11 @@ func _setAnimation():
 		$anim.play(anim)
 
 func knockback():
-	velocity.x = -knockbackDir * knockbackInten
+	if $Right.is_colliding():
+		velocity.x = -knockbackDir * knockbackInten
+	if $Left.is_colliding():
+		velocity.x = knockbackDir * knockbackInten
+	
 	velocity = move_and_slide(velocity)
 
 func _on_HurtBox_body_entered(body):

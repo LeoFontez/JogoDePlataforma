@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=2]
+[gd_scene load_steps=170 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Scripts/ResetLevel.gd" type="Script" id=15]
 [ext_resource path="res://Prefabs/HUD.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Prefabs/CheckPoint.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Prefabs/Goal.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -3576,7 +3577,7 @@ position = Vector2( 249, -23 )
 position = Vector2( -60, -40 )
 
 [node name="CheckPoint" parent="CheckPoints" instance=ExtResource( 17 )]
-position = Vector2( 453, 50 )
+position = Vector2( 452, 51 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3, 10 )
@@ -3702,6 +3703,9 @@ __meta__ = {
 [node name="Collision" type="CollisionShape2D" parent="FallZone2/FallZone2"]
 position = Vector2( 0.00012207, 0 )
 shape = SubResource( 59 )
+
+[node name="Goal" parent="." instance=ExtResource( 18 )]
+position = Vector2( 490, -70 )
 
 [connection signal="body_entered" from="FallZone2/FallZone" to="FallZone2/FallZone" method="_on_FallZone_body_entered"]
 [connection signal="body_entered" from="FallZone2/FallZone2" to="FallZone2/FallZone2" method="_on_FallZone_body_entered"]

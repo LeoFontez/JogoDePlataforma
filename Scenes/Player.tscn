@@ -245,10 +245,10 @@ tracks/2/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 10.0625, 12.0039 )
+extents = Vector2( 10.4575, 12.0039 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 11.8177, 10 )
+extents = Vector2( 11.6565, 8.93867 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -0.157486, -15.8425 )
@@ -268,7 +268,7 @@ anims/RESET = SubResource( 2 )
 anims/Run = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.1875, 3.87107 )
+position = Vector2( -0.582479, 3.87107 )
 shape = SubResource( 3 )
 
 [node name="Raycasts" type="Node2D" parent="."]
@@ -304,7 +304,19 @@ collision_layer = 32
 collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2( 0.204971, -0.148651 )
+position = Vector2( 0.366215, 0.912683 )
 shape = SubResource( 8 )
+
+[node name="Left" type="RayCast2D" parent="."]
+position = Vector2( 0.0834236, 8.84329 )
+enabled = true
+cast_to = Vector2( -16, 0 )
+collision_mask = 2
+
+[node name="Right" type="RayCast2D" parent="."]
+position = Vector2( 0.0834236, 8.84329 )
+enabled = true
+cast_to = Vector2( 16, 0 )
+collision_mask = 2
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
