@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/MovePlataform.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.8883, 2.5365 )
+extents = Vector2( 15.8883, 1.5338 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -94,13 +94,16 @@ collision_layer = 16
 collision_mask = 5
 motion/sync_to_physics = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2( -0.111702, -0.0706919 )
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="Platform"]
+position = Vector2( 0.117985, 0.235966 )
 texture = ExtResource( 1 )
 hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+visible = false
+position = Vector2( 0.242249, -0.129541 )
+shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="Anim" type="AnimationPlayer" parent="Platform"]
 autoplay = "default"

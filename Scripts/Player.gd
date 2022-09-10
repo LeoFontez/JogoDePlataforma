@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	if !hurted:
 		_get_input()
 
-	move_and_slide(velocity, UP)
+	velocity = move_and_slide(velocity, UP)
 
 	isGrounded = _checkIsGround()
 	
