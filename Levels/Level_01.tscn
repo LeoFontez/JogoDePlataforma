@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=2]
+[gd_scene load_steps=169 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Prefabs/MovePlataform.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/ResetLevel.gd" type="Script" id=15]
 [ext_resource path="res://Prefabs/HUD.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Prefabs/CheckPoint.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -3570,6 +3571,12 @@ position = Vector2( 328, 28 )
 
 [node name="FallingPlataform2" parent="FallingPlataform" instance=ExtResource( 13 )]
 position = Vector2( 249, -23 )
+
+[node name="CheckPoints" type="Node2D" parent="."]
+position = Vector2( -60, -40 )
+
+[node name="CheckPoint" parent="CheckPoints" instance=ExtResource( 17 )]
+position = Vector2( 453, 50 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3, 10 )

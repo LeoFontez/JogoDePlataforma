@@ -22,6 +22,7 @@ signal changeLife(playerHealth)
 func _ready():
 	connect("changeLife", get_parent().get_node("HUD/HBoxContainer/Hearts"), "onChangeLife")
 	emit_signal("changeLife", maxHealth)
+	position.x = Global.checkPointPos + 50
 
 func _physics_process(delta: float) -> void:
 
@@ -82,6 +83,7 @@ func knockback():
 	velocity = move_and_slide(velocity)
 
 func _on_HurtBox_body_entered(body):
+	
 	playerHealth -= 1
 	hurted = true
 	emit_signal("changeLife", playerHealth)
@@ -90,6 +92,10 @@ func _on_HurtBox_body_entered(body):
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_node("HurtBox/Collision").set_deferred("disabled", false)
 	hurted = false
+	
 	if playerHealth < 1:
 		queue_free()
 		get_tree().reload_current_scene()
+
+func hitCheckPoint():
+	Global.checkPointPos = position.x
