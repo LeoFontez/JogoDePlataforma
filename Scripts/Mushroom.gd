@@ -44,7 +44,7 @@ func _on_anim_animation_finished(anim_name):
 func _on_HitBox_body_entered(body: Node) -> void:
 	hitted = true
 	health -= 1
-	body.velocity.y -= 750
+	body.velocity.y = body.jumpForce / 2
 	yield(get_tree().create_timer(0.2), "timeout")
 	hitted  = false
 	

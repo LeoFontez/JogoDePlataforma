@@ -7,13 +7,21 @@ var gravity = 1200
 var jumpForce = -720
 var isGrounded  
 
-var health = 3
+var playerHealth = 3
+var maxHealth = 3
+
 var hurted = false
 
 var knockbackDir = 1
 var knockbackInten = 500
 
 onready var raycasts = $Raycasts
+
+signal changeLife(playerHealth)
+
+func _ready():
+	connect("changeLife", get_parent().get_node("HUD/HBoxContainer/Hearts"), "onChangeLife")
+	emit_signal("changeLife", maxHealth)
 
 func _physics_process(delta: float) -> void:
 
@@ -74,14 +82,14 @@ func knockback():
 	velocity = move_and_slide(velocity)
 
 func _on_HurtBox_body_entered(body):
-	health -= 1
+	playerHealth -= 1
 	hurted = true
+	emit_signal("changeLife", playerHealth)
 	knockback()
 	get_node("HurtBox/Collision").set_deferred("disabled", true)
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_node("HurtBox/Collision").set_deferred("disabled", false)
 	hurted = false
-	print(health)
-	if health < 1:
+	if playerHealth < 1:
 		queue_free()
 		get_tree().reload_current_scene()
