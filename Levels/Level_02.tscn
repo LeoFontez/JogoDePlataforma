@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=2]
+[gd_scene load_steps=172 format=2]
 
 [ext_resource path="res://Assets/Terrain/Terrain (16x16).png" type="Texture" id=1]
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" type="Texture" id=2]
@@ -16,7 +16,10 @@
 [ext_resource path="res://Prefabs/CheckPoint.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Prefabs/MovePlataform.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Prefabs/Goal.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Prefabs/BreakBox.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scripts/ResetLevel.gd" type="Script" id=18]
+[ext_resource path="res://Items/AppleRig.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Items/BananaRig.tscn" type="PackedScene" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -3579,7 +3582,7 @@ position = Vector2( -60, -40 )
 position = Vector2( 452, 51 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 3, 10 )
+position = Vector2( 30, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -3684,7 +3687,12 @@ shape = SubResource( 59 )
 
 [node name="Goal" parent="." instance=ExtResource( 16 )]
 position = Vector2( 490, -70 )
-path = "res://Levels/Level_01.tscn"
+
+[node name="BreakBox" parent="." instance=ExtResource( 17 )]
+position = Vector2( 13, -22 )
+collision_mask = 1
+fruit_instance = [ ExtResource( 19 ), ExtResource( 20 ) ]
+fruits = 5
 
 [node name="Transition_in" parent="." instance=ExtResource( 12 )]
 

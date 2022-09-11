@@ -22,8 +22,9 @@ signal changeLife(playerHealth)
 func _ready():
 	connect("changeLife", get_parent().get_node("HUD/HBoxContainer/Hearts"), "onChangeLife")
 	emit_signal("changeLife", maxHealth)
-	position.x = Global.checkPointPos
+	position.x = Global.checkPointPos +1
 
+	
 func _physics_process(delta: float) -> void:
 
 	velocity.y += gravity * delta
@@ -56,7 +57,7 @@ func _get_input():
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and isGrounded:
-		velocity.y = jumpForce / 2		
+		velocity.y = jumpForce / 2
 
 func _checkIsGround():
 	for raycast in raycasts.get_children():
@@ -106,3 +107,7 @@ func _on_HurtBox_body_entered(body):
 
 func hitCheckPoint():
 	Global.checkPointPos = position.x
+
+func _on_HeadCollider_body_entered(body):
+	if body.has_method("destroy"):
+		body.destroy()
