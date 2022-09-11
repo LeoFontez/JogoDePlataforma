@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name enemyBase
 
 export var speed = 32
 export var health = 1
@@ -9,7 +10,7 @@ var hitted = false
 
 func _physics_process(delta: float) -> void:
 	velocity.x = speed * moveDirection
-	velocity.y += gravity * delta
+	
 	
 	if moveDirection == 1:
 		$texture.flip_h = true
@@ -19,6 +20,9 @@ func _physics_process(delta: float) -> void:
 	_setAnimation()
 	
 	velocity = move_and_slide(velocity)
+
+func apply_gravity(delta):
+	velocity.y += gravity * delta
 	
 func _setAnimation():
 	var anim = "Run"

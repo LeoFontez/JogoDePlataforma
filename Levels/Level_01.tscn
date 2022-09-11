@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=2]
+[gd_scene load_steps=176 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Terrain/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://Prefabs/BreakBox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Items/AppleRig.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Items/BananaRig.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Bird.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/PeaShooter.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -3679,6 +3681,12 @@ position = Vector2( 347, -2 )
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2( -110, 7 )
 
+[node name="PeaShooter" parent="Enemy" instance=ExtResource( 24 )]
+position = Vector2( 298, -29 )
+
+[node name="Bird" parent="Enemy" instance=ExtResource( 23 )]
+position = Vector2( 357, -10 )
+
 [node name="Mushroom2" parent="Enemy" instance=ExtResource( 12 )]
 position = Vector2( 278, 36 )
 
@@ -3735,7 +3743,7 @@ fruits = 10
 position = Vector2( -36, 14 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2, -3 )
+position = Vector2( 38, 5 )
 
 [connection signal="body_entered" from="FallZone2/FallZone" to="FallZone2/FallZone" method="_on_FallZone_body_entered"]
 [connection signal="body_entered" from="FallZone2/FallZone2" to="FallZone2/FallZone2" method="_on_FallZone_body_entered"]
